@@ -60,36 +60,27 @@ public class Implementation implements NumberRangeSummarizer{
 	@Override
 	public String summarizeCollection(Collection<Integer> input) {
 		String output = "";
-		int numbers[];
-		java.util.ArrayList<Integer> arrayListCollection;
+		java.util.ArrayList<Integer> inputArrayList;
 		int i = 0, j = 0;
 		
 		// Downcast Collection to ArrayList
-		arrayListCollection= (java.util.ArrayList<Integer>) input;  
-		
-		// create array
-		numbers = new int[arrayListCollection.size()];
-		
-		// load array
-        for (int index = 0; index < arrayListCollection.size(); index++) {
-        	numbers[index] = (int) arrayListCollection.get(index);
-		}
+		inputArrayList = (java.util.ArrayList<Integer>) input;  
 
-		while(i < numbers.length) {
+		while(i < inputArrayList.size()) {
 			j = i + 1;
 			// sequential?
-			while (j < numbers.length
-					&& numbers[j] - numbers[i] <= j - i) {
+			while (j < inputArrayList.size()
+					&& inputArrayList.get(j) - inputArrayList.get(i) <= j - i) {
 				j += 1;
 			}
 			// non sequential values
 			if (j - i == 1) {
-				output += numbers[i] + ", ";
+				output += inputArrayList.get(i) + ", ";
 				i += 1;
 			}
 			// sequential values
 			else {
-				output += numbers[i] + " - " + numbers[--j] + ", ";
+				output += inputArrayList.get(i) + " - " + inputArrayList.get(--j) + ", ";
 				i = j + 1;
 			}
 		}
