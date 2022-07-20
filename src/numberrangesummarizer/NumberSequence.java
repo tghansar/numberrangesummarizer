@@ -6,25 +6,12 @@ import java.util.Collection;
 /**
  * The implementation of creating numbers
  */
-public class Implementation implements NumberRangeSummarizer{
+public class NumberSequence implements NumberRangeSummarizer{
 
 	/**
 	 * Instance variables
 	 */
 	Collection<Integer> collection;
-	int testNumber = 1;
-
-	/**
-	 * Print the test output.
-	 * @param input
-	 */
-	public void testOutput(String input) {
-		collection = collect(input);
-		System.out.println("Test number " + testNumber++ + ":");
-		System.out.println(summarizeCollection(collection));
-		System.out.println("");
-	}
-	
 
 	/**
 	 * Store the input data into a collection.
@@ -33,7 +20,7 @@ public class Implementation implements NumberRangeSummarizer{
 	 */
 	@Override
 	public Collection<Integer> collect(String input) {
-		String array[];		
+		String array[];	
 		ArrayList<Integer> arrayList;
 		
 		// create array of String values
@@ -49,7 +36,7 @@ public class Implementation implements NumberRangeSummarizer{
 		
 		return arrayList;
 	}
-
+	
 	/**
 	 * Create a result String that groups all the the sequential
 	 * values to specified ranges, and include single values,
@@ -86,5 +73,16 @@ public class Implementation implements NumberRangeSummarizer{
 		}
 		
         return output;
-	}	
+	}
+	
+	/**
+	 * Create result
+	 * @param input The comma separated values
+	 * @return The result
+	 */
+	public String getResult(String input) {
+		this.collection = collect(input);
+		return summarizeCollection(this.collection);
+	}
+
 }
